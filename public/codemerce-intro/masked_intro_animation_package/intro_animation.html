@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Masked Intro Animation</title>
+<style>
+  html,body{margin:0;width:100%;height:100%;background:transparent;overflow:hidden}
+  #stage{width:220px;height:220px;display:block;background:transparent}
+</style>
+</head>
+<body>
+<canvas id="stage" width="220" height="220" aria-label="Masked character animation"></canvas>
+<script>
+const canvas=document.getElementById('stage');
+const ctx=canvas.getContext('2d');
+const frames=Array.from({length:16},(_,i)=>{
+  const img=new Image(); img.src=`intro_frames/frame_${String(i).padStart(2,'0')}.png`; return img;
+});
+// 1.7-second loop: the gesture accelerates through the sweep and eases into the final pose.
+const timing=[0.14,0.10,0.08,0.07,0.07,0.07,0.07,0.07,0.08,0.09,0.10,0.11,0.12,0.12,0.12,0.09];
+let ready=false, start=performance.now();
+Promise.all(frames.map(img=>new Promise(r=>img.onload=r))).then(()=>{ready=true;start=performance.now();requestAnimationFrame(loop)});
+function loop(now){
+  if(!ready)return;
+  const total=timing.reduce((a,b)=>a+b,0)*1000;
+  let t=(now-start)%total;
+  let i=0;
+  while(t>timing[i]*1000){t-=timing[i]*1000;i=(i+1)%frames.length;}
+  ctx.clearRect(0,0,220,220);
+  ctx.drawImage(frames[i],0,0,220,220);
+  requestAnimationFrame(loop);
+}
+</script>
+</body>
+</html>

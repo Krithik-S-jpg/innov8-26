@@ -1,0 +1,375 @@
+.review-login,
+.review-dashboard {
+  min-height: 100vh;
+  background: #050506;
+  color: #eee;
+}
+.review-login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 7vw;
+  padding: 8vw;
+  background:
+    radial-gradient(circle at 22% 45%, #50230b35, transparent 35%), #050506;
+}
+.review-login > section > svg {
+  width: 90px;
+  height: 90px;
+  padding: 20px;
+  border: 2px solid #e5ad28;
+  color: #e5ad28;
+}
+.review-login small,
+.review-dashboard small {
+  color: #e8ad29;
+  font: 700 8px JetBrains Mono;
+  letter-spacing: 0.16em;
+}
+.review-login section small {
+  display: block;
+  margin-top: 25px;
+}
+.review-login h1 {
+  font: 900 clamp(74px, 9vw, 135px)/0.76 "Barlow Condensed";
+  margin: 25px 0;
+}
+.review-login h1 span {
+  color: #e0a525;
+}
+.review-login section p {
+  color: #888;
+}
+.review-login form {
+  padding: 45px;
+  border: 1px solid #ffffff1b;
+  background: #09090ae8;
+}
+.review-login h2 {
+  font: 900 58px/0.82 "Barlow Condensed";
+  margin: 24px 0 35px;
+}
+.review-login label {
+  display: block;
+  margin-top: 19px;
+  color: #777;
+  font: 600 8px JetBrains Mono;
+}
+.review-login input {
+  display: block;
+  width: 100%;
+  height: 60px;
+  margin-top: 8px;
+  padding: 0 16px;
+  border: 1px solid #ffffff20;
+  background: #0d0d0f;
+  color: #eee;
+  font: 600 10px JetBrains Mono;
+}
+.review-login .primary {
+  width: 100%;
+  margin-top: 25px;
+  justify-content: center;
+}
+.review-close {
+  position: fixed;
+  right: 28px;
+  top: 28px;
+  padding: 15px;
+  border: 1px solid #ffffff20;
+  color: #eee;
+}
+.review-error {
+  margin: 18px 0;
+  padding: 14px;
+  border: 1px solid #ef315355;
+  background: #3b0b15;
+  color: #ef4964;
+  font: 600 9px JetBrains Mono;
+}
+.review-dashboard {
+  width: 100%;
+  max-width: none;
+  overflow-x: hidden;
+  padding: 38px clamp(18px, 5vw, 76px) 90px;
+  background-image:
+    linear-gradient(#ffffff04 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff04 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.review-dashboard > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 26px;
+  border-bottom: 1px solid #ffffff1c;
+  gap: 30px;
+}
+.review-dashboard > header h1 {
+  margin: 8px 0 0;
+  font: 900 clamp(32px, 4vw, 54px)/1 "Barlow Condensed";
+  letter-spacing: 0.035em;
+}
+.review-dashboard > header > div:last-child {
+  display: flex;
+  gap: 10px;
+}
+.review-dashboard > header button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 15px;
+  border: 1px solid #ffffff20;
+  background: #09090a;
+  color: #aaa;
+  font: 600 8px JetBrains Mono;
+}
+.review-dashboard > header button:last-child {
+  border-color: #a6223a;
+  color: #ef3153;
+}
+.review-filters {
+  position: static;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  width: 100%;
+  height: auto;
+  gap: 10px;
+  margin: 28px 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  transform: none;
+  z-index: auto;
+}
+.review-filters button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 1px solid #ffffff1d;
+  background: #080809;
+  color: #777;
+  font: 600 8px JetBrains Mono;
+}
+.review-filters button.active {
+  border-color: #e1aa27;
+  color: #e1aa27;
+  background: #231a08;
+}
+.review-filters b {
+  margin-left: 9px;
+}
+.submission-list {
+  display: grid;
+  gap: 18px;
+}
+.submission-card {
+  width: 100%;
+  padding: 27px;
+  border: 1px solid #ffffff1b;
+  background: #080809;
+}
+.submission-card > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #ffffff15;
+}
+.submission-card h2 {
+  margin: 7px 0 0;
+  font: 800 30px "Barlow Condensed";
+}
+.submission-card > header > span {
+  padding: 8px 11px;
+  border: 1px solid #d3a12466;
+  color: #e4ae28;
+  font: 700 8px JetBrains Mono;
+}
+.submission-card.approved > header > span {
+  border-color: #36d98a66;
+  color: #36d98a;
+}
+.submission-card.rejected > header > span {
+  border-color: #ef315366;
+  color: #ef3153;
+}
+.submission-domain {
+  display: grid;
+  gap: 7px;
+  padding: 20px 0;
+}
+.submission-domain strong {
+  font: 700 16px JetBrains Mono;
+}
+.submission-abstract {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 21px;
+  border-left: 3px solid #e0a626;
+  background: #110e08;
+}
+.submission-abstract svg {
+  color: #e0a626;
+  flex: none;
+}
+.submission-abstract p {
+  overflow-wrap: anywhere;
+  margin: 10px 0 0;
+  color: #bbb;
+  font: 500 11px/1.8 JetBrains Mono;
+}
+.submission-members {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 18px;
+}
+.submission-members > div {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+  padding: 15px;
+  border: 1px solid #ffffff12;
+}
+.submission-members strong {
+  font: 700 14px "Barlow Condensed";
+}
+.submission-members span,
+.submission-members small {
+  color: #777;
+  font: 500 7px JetBrains Mono;
+  overflow-wrap: anywhere;
+}
+.submission-card > footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #ffffff12;
+}
+.submission-card time {
+  color: #666;
+  font: 500 7px JetBrains Mono;
+}
+.submission-card footer > div {
+  display: flex;
+  gap: 9px;
+}
+.submission-card footer button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 17px;
+  background: #09090a;
+  font: 700 8px JetBrains Mono;
+}
+.submission-card button.reject {
+  border: 1px solid #ef315355;
+  color: #ef3153;
+}
+.submission-card button.approve {
+  border: 1px solid #36d98a55;
+  color: #36d98a;
+}
+.review-empty {
+  padding: 70px;
+  text-align: center;
+  border: 1px dashed #ffffff1a;
+  color: #666;
+  font: 600 9px JetBrains Mono;
+}
+@media (max-width: 1100px) {
+  .review-dashboard {
+    padding-inline: 30px;
+  }
+  .submission-members {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 800px) {
+  .review-login {
+    grid-template-columns: 1fr;
+    padding: 75px 18px;
+  }
+  .review-login > section {
+    display: none;
+  }
+  .review-dashboard > header,
+  .submission-card > footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .review-dashboard {
+    padding: 24px 18px 70px;
+  }
+  .review-dashboard > header > div:last-child {
+    width: 100%;
+  }
+  .review-dashboard > header button {
+    flex: 1;
+    justify-content: center;
+  }
+  .review-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+  .submission-members {
+    grid-template-columns: 1fr;
+  }
+  .submission-card > header {
+    align-items: flex-start;
+    gap: 14px;
+    flex-direction: column;
+  }
+  .submission-domain strong {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+@media (max-width: 520px) {
+  .review-dashboard {
+    padding: 20px 12px 55px;
+  }
+  .review-dashboard > header > div:last-child,
+  .submission-card footer > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+  .review-filters {
+    gap: 7px;
+  }
+  .review-filters button {
+    min-width: 0;
+    padding: 11px;
+    font-size: 7px;
+  }
+  .submission-card {
+    padding: 18px 14px;
+  }
+  .submission-card h2 {
+    font-size: 25px;
+  }
+  .submission-abstract {
+    display: block;
+    padding: 16px;
+  }
+  .submission-abstract svg {
+    margin-bottom: 12px;
+  }
+  .submission-abstract p {
+    font-size: 9px;
+  }
+  .submission-card footer button {
+    justify-content: center;
+    padding-inline: 10px;
+  }
+  .review-empty {
+    padding: 45px 15px;
+  }
+}

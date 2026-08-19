@@ -1,0 +1,732 @@
+/* Final responsive layer for all active INNOV8 routes. */
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+.site-shell,
+.admin-dashboard,
+.admin-login,
+.review-dashboard,
+.review-login,
+.auth-page {
+  width: 100%;
+  min-width: 0;
+}
+.hero-copy,
+.section-heading > *,
+.detail-shell > *,
+.team-flow form > *,
+.admin-panel > *,
+.submission-card > * {
+  min-width: 0;
+}
+
+@media (max-width: 1200px) {
+  .site-shell > nav {
+    padding-inline: 4vw;
+  }
+  .nav-links {
+    gap: 22px;
+  }
+  .hero {
+    padding-inline: 7vw;
+  }
+  .hero-copy {
+    max-width: 53vw;
+  }
+  .hero h1 {
+    font-size: clamp(68px, 8.8vw, 105px);
+  }
+  .section {
+    padding-inline: 5vw;
+  }
+  .challenge-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .challenge-card:last-child:nth-child(odd) {
+    grid-column: 1/-1;
+  }
+  .briefing {
+    padding-inline: 5vw;
+  }
+  .detail-shell {
+    max-width: 100%;
+  }
+  .team-flow form,
+  .team-code-result {
+    max-width: 100%;
+  }
+  .admin-dashboard,
+  .review-dashboard {
+    padding-inline: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-shell > nav {
+    height: 68px;
+    padding-inline: 22px;
+  }
+  .site-shell > nav .brand {
+    font-size: 18px;
+  }
+  .nav-links {
+    inset: 68px 0 0;
+    z-index: 20;
+    padding: 30px;
+    background: #060607f7;
+  }
+  .nav-links a {
+    font-size: 22px;
+  }
+  .hero {
+    min-height: 100svh;
+    padding: 105px 6vw 70px;
+  }
+  .hero-copy {
+    max-width: 620px;
+  }
+  .hero-image {
+    background-position: 64% center;
+  }
+  .hero-image:after {
+    background:
+      linear-gradient(90deg, #030304f2 0, #030304b8 55%, #0303044d),
+      linear-gradient(0deg, #030304 0, transparent 38%);
+  }
+  .hero-actions {
+    max-width: 100%;
+  }
+  .section-heading {
+    gap: 25px;
+  }
+  .section-heading h2 {
+    font-size: clamp(64px, 12vw, 105px);
+  }
+  .about-facts {
+    margin-top: 48px;
+  }
+  .briefing {
+    gap: 45px;
+  }
+  .briefing h2 {
+    font-size: clamp(68px, 12vw, 100px);
+  }
+  .challenge-grid {
+    grid-template-columns: 1fr;
+  }
+  .challenge-card:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+  .schedule .section-heading {
+    padding-right: 0;
+  }
+  .countdown-panel {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin: 25px 0 55px;
+  }
+  .final-cta {
+    padding: 95px 5vw;
+  }
+  .final-cta h2 {
+    font-size: clamp(78px, 17vw, 135px);
+  }
+  body > div > main.site-shell > footer {
+    padding: 40px 5vw;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .footer-brand-group {
+    grid-column: 1/-1;
+  }
+  .copyright-disclaimer {
+    grid-column: 1/-1;
+  }
+  .team-gate {
+    grid-template-columns: 1fr;
+    padding: 80px 24px 50px;
+  }
+  .vote-options {
+    width: 100%;
+  }
+  .team-flow-head {
+    grid-template-columns: 1fr;
+  }
+  .team-flow-head p {
+    max-width: 620px;
+  }
+  .team-form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+  .auth-visual {
+    position: relative;
+    height: 230px;
+  }
+  .auth-panel {
+    min-height: calc(100svh - 230px);
+  }
+  .admin-login,
+  .review-login {
+    grid-template-columns: 1fr;
+    padding: 90px 7vw 50px;
+  }
+  .admin-login > section,
+  .review-login > section {
+    display: none;
+  }
+  .admin-login form,
+  .review-login form {
+    width: min(620px, 100%);
+    margin: auto;
+  }
+  .admin-event-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .admin-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+  .admin-roster {
+    grid-template-columns: 1fr;
+  }
+  .admin-team-list summary {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .site-shell > nav {
+    padding-inline: 16px;
+  }
+  .site-shell > nav .brand span {
+    font-size: 8px;
+  }
+  .hero {
+    padding: 90px 18px 55px;
+  }
+  .hero-image {
+    background-position: 68% center;
+  }
+  .hero-image:after {
+    background: linear-gradient(0deg, #030304 5%, #030304de 53%, #03030485);
+  }
+  .hero-copy {
+    max-width: 100%;
+  }
+  .hero-kicker {
+    font-size: 7px;
+  }
+  .hero h1 {
+    font-size: clamp(56px, 18vw, 78px);
+    line-height: 0.82;
+  }
+  .hero h2 {
+    font-size: 12px;
+  }
+  .hero-statement {
+    font-size: 17px;
+  }
+  .hero-meta {
+    font-size: 7px;
+  }
+  .hero-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .hero-actions button,
+  .hero-actions a {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .hero-index {
+    display: none;
+  }
+  .section {
+    padding: 75px 18px;
+  }
+  .section-kicker {
+    font-size: 7px;
+  }
+  .section-heading h2 {
+    font-size: clamp(58px, 18vw, 82px);
+  }
+  .section-heading p {
+    font-size: 12px;
+  }
+  .about-facts {
+    grid-template-columns: 1fr;
+  }
+  .about-facts div {
+    border-right: 0 !important;
+    border-bottom: 1px solid #ffffff18 !important;
+  }
+  .about-facts div:last-child {
+    border-bottom: 0 !important;
+  }
+  .purpose .objectives {
+    grid-template-columns: 1fr;
+  }
+  .official-rules ol {
+    grid-template-columns: 1fr;
+  }
+  .briefing {
+    grid-template-columns: 1fr;
+    padding: 75px 18px;
+  }
+  .challenge-card {
+    min-height: 420px;
+  }
+  .card-brief {
+    padding: 22px 18px;
+  }
+  .control-strip {
+    align-items: flex-start;
+  }
+  .countdown-panel {
+    padding: 24px 20px;
+  }
+  .countdown-panel strong {
+    font-size: 42px;
+  }
+  .timeline {
+    margin-left: 10px;
+  }
+  .timeline article {
+    padding: 0 0 28px 28px;
+    min-height: 120px;
+  }
+  .timeline time {
+    font-size: 28px;
+  }
+  .final-cta {
+    padding: 75px 18px;
+  }
+  .final-cta h2 {
+    font-size: clamp(68px, 20vw, 100px);
+  }
+  body > div > main.site-shell > footer {
+    grid-template-columns: 1fr;
+    padding: 34px 18px;
+  }
+  .footer-brand-group {
+    grid-column: auto;
+    align-items: flex-start;
+  }
+  .disclaimer-trigger {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .copyright-disclaimer.is-open {
+    max-height: 500px;
+    padding-inline: 17px;
+  }
+  .copyright-disclaimer:before {
+    left: 17px;
+  }
+  .overlay .close,
+  .challenge-detail .close,
+  .team-flow .close,
+  .team-gate .close {
+    right: 12px;
+    top: 12px;
+    width: 48px;
+    height: 48px;
+  }
+  .challenge-detail {
+    padding: 72px 10px 25px;
+  }
+  .detail-shell > header {
+    padding: 28px 18px;
+  }
+  .detail-shell > header h2 {
+    font-size: clamp(48px, 16vw, 70px);
+  }
+  .detail-shell > header p {
+    font-size: 11px;
+  }
+  .detail-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+  .detail-meta div {
+    min-height: 80px;
+    padding: 16px;
+  }
+  .detail-content > section,
+  .detail-content > aside {
+    padding: 25px 18px;
+  }
+  .detail-content ol li {
+    grid-template-columns: 34px 1fr;
+  }
+  .detail-shell > footer {
+    padding: 20px 18px;
+  }
+  .event-status {
+    padding: 18px 14px;
+  }
+  .team-status-head {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .team-status-head > button {
+    width: 100%;
+  }
+  .member-status-list {
+    grid-template-columns: 1fr;
+  }
+  .roster-add-form {
+    grid-template-columns: 1fr;
+  }
+  .roster-add-form > button {
+    width: 100%;
+  }
+  .paper-review-chip {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .paper-review-chip span {
+    margin-left: 0;
+  }
+  .team-gate {
+    padding: 72px 12px 32px;
+  }
+  .vote-head h2 {
+    font-size: clamp(55px, 18vw, 78px);
+  }
+  .vote-options {
+    grid-template-columns: 1fr;
+  }
+  .vote-card {
+    min-height: 300px;
+    padding: 25px;
+  }
+  .vote-symbol {
+    width: 78px;
+    height: 78px;
+    font-size: 52px;
+    margin: 0 auto 22px;
+  }
+  .team-flow {
+    padding: 70px 10px 28px;
+  }
+  .team-flow-head h2 {
+    font-size: clamp(52px, 17vw, 72px);
+  }
+  .team-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-name-field input,
+  .paper-submission-fields select {
+    height: 58px;
+  }
+  .paper-abstract-field textarea {
+    min-height: 210px;
+  }
+  .member-fields {
+    padding: 18px 12px;
+  }
+  .team-submit {
+    min-width: 0;
+    width: 100%;
+  }
+  .team-join-form,
+  .team-code-result {
+    padding: 30px 15px;
+  }
+  .team-join-form h2,
+  .team-code-result h2 {
+    font-size: clamp(58px, 18vw, 82px);
+  }
+  .team-join-form input {
+    font-size: 17px;
+  }
+  .generated-code {
+    padding: 22px 12px;
+  }
+  .generated-code strong {
+    font-size: clamp(25px, 9vw, 45px);
+    overflow-wrap: anywhere;
+  }
+  .registration {
+    padding: 70px 10px 25px;
+  }
+  .registration form {
+    padding: 22px 14px;
+  }
+  .registration form h2 {
+    font-size: clamp(45px, 15vw, 62px);
+  }
+  .registration .reg-progress {
+    grid-template-columns: 1fr 1fr;
+  }
+  .flip-card {
+    width: min(96vw, 620px);
+    height: 310px;
+    aspect-ratio: auto;
+  }
+  .invite-symbols {
+    gap: 14px;
+  }
+  .invite-back {
+    grid-template-columns: 64px 1fr;
+    padding: 24px 18px;
+  }
+  .invite-back .seal {
+    width: 58px;
+    height: 58px;
+  }
+  .access-code {
+    font-size: 20px;
+  }
+  .barcode > i {
+    width: 65px;
+  }
+  .player-events b {
+    white-space: normal;
+  }
+  .auth-visual {
+    height: 170px;
+    padding: 20px;
+  }
+  .auth-copy {
+    left: 20px;
+    bottom: 22px;
+  }
+  .auth-copy h2 {
+    font-size: 38px;
+  }
+  .auth-panel {
+    min-height: calc(100svh - 170px);
+    padding: 65px 14px 30px;
+  }
+  .auth-choice h1,
+  .auth-form h1,
+  .auth-confirmed h1 {
+    font-size: clamp(52px, 16vw, 68px);
+  }
+  .auth-options {
+    grid-template-columns: 1fr;
+  }
+  .auth-options > button {
+    min-height: 105px;
+    padding: 16px;
+  }
+  .auth-grid {
+    grid-template-columns: 1fr;
+  }
+  .auth-form input,
+  .auth-form select {
+    height: 52px;
+  }
+  .admin-dashboard,
+  .review-dashboard {
+    padding: 22px 12px 60px;
+  }
+  .admin-dashboard > header,
+  .review-dashboard > header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .admin-actions,
+  .review-dashboard > header > div:last-child {
+    width: 100%;
+  }
+  .admin-actions button,
+  .review-dashboard > header button {
+    flex: 1;
+    justify-content: center;
+  }
+  .admin-metrics {
+    grid-template-columns: 1fr 1fr;
+    margin: 24px 0;
+  }
+  .admin-metrics article {
+    padding: 20px 15px;
+  }
+  .admin-metrics strong {
+    font-size: 38px;
+  }
+  .admin-panel {
+    padding: 18px 12px;
+  }
+  .admin-panel-title {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .admin-panel-title label {
+    width: 100%;
+  }
+  .admin-event-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-team-list summary {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+  .admin-roster {
+    padding: 12px;
+  }
+  .review-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+  .submission-card {
+    padding: 18px 13px;
+  }
+  .submission-card > header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .submission-members {
+    grid-template-columns: 1fr;
+  }
+  .submission-card > footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .submission-card footer > div {
+    width: 100%;
+  }
+  .submission-card footer button {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-shell > nav .brand {
+    font-size: 16px;
+  }
+  .menu-button {
+    padding: 7px;
+  }
+  .hero h1 {
+    font-size: 54px;
+  }
+  .hero h2 {
+    letter-spacing: 0.15em;
+  }
+  .section-heading h2 {
+    font-size: 55px;
+  }
+  .challenge-card {
+    min-height: 370px;
+  }
+  .countdown-panel strong {
+    font-size: 35px;
+  }
+  .detail-meta {
+    grid-template-columns: 1fr;
+  }
+  .team-status-head {
+    grid-template-columns: 1fr;
+  }
+  .status-title {
+    align-items: flex-start;
+  }
+  .status-title > svg {
+    flex: none;
+  }
+  .flip-card {
+    height: 285px;
+  }
+  .invite-back {
+    grid-template-columns: 52px 1fr;
+    column-gap: 10px;
+    padding: 20px 14px;
+  }
+  .invite-back .seal {
+    width: 48px;
+    height: 48px;
+  }
+  .access-code {
+    font-size: 17px;
+  }
+  .invite-back strong {
+    font-size: 16px;
+  }
+  .barcode {
+    display: none;
+  }
+  .auth-visual {
+    height: 140px;
+  }
+  .auth-copy h2 {
+    font-size: 32px;
+  }
+  .auth-panel {
+    min-height: calc(100svh - 140px);
+  }
+  .admin-login,
+  .review-login {
+    padding: 75px 12px 35px;
+  }
+  .admin-login form,
+  .review-login form {
+    padding: 28px 16px;
+  }
+  .admin-login form h2,
+  .review-login h2 {
+    font-size: 48px;
+  }
+  .admin-metrics {
+    grid-template-columns: 1fr;
+  }
+  .review-filters button {
+    padding: 10px 8px;
+  }
+  .submission-abstract {
+    display: block;
+  }
+  .submission-abstract svg {
+    margin-bottom: 10px;
+  }
+  .submission-card footer > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (hover: none) {
+  button:hover,
+  a:hover {
+    transform: none !important;
+  }
+  .challenge-card .card-brief {
+    opacity: 1;
+    transform: none;
+    background: linear-gradient(0deg, #050506f8 0, #050506d8 60%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .flip-inner {
+    transition: none;
+  }
+}

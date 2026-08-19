@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Codemerce Intro</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #030303;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff
+    }
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      background: #030303;
+      z-index: 999999;
+      overflow: hidden;
+      touch-action: none
+    }
+
+    .bg-grid {
+      position: absolute;
+      inset: -15%;
+      opacity: .12;
+      background:
+        linear-gradient(rgba(229, 9, 20, .25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(229, 9, 20, .25) 1px, transparent 1px);
+      background-size: 65px 65px;
+      transform: perspective(700px) rotateX(58deg) scale(1.35);
+      transform-origin: center bottom;
+      will-change: transform
+    }
+
+    .glow {
+      position: absolute;
+      width: 80vmax;
+      height: 80vmax;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(229, 9, 20, .25), transparent 65%);
+      filter: blur(25px)
+    }
+
+    .vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, transparent 30%, rgba(0, 0, 0, .92) 100%)
+    }
+
+    .screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px
+    }
+
+    /* SCREEN 1: COLLEGE (DESKTOP & MOBILE RESPONSIVE) */
+    .college-screen {
+      animation: collegeOut 1.1s 3.3s forwards;
+      will-change: opacity, transform
+    }
+
+    .college-wrap {
+      text-align: center;
+      position: relative;
+      width: 100%;
+      max-width: 850px;
+      margin: 0 auto
+    }
+
+    .college-logo {
+      width: clamp(120px, 16vw, 200px);
+      height: clamp(120px, 16vw, 200px);
+      object-fit: contain;
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(.65);
+      filter: drop-shadow(0 0 16px rgba(229, 9, 20, .85));
+      animation: logoIn 1s .2s forwards;
+      will-change: opacity, transform
+    }
+
+    .college-name {
+      margin-top: clamp(16px, 3vh, 28px);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: nameIn .9s 1.05s forwards;
+      will-change: opacity, transform
+    }
+
+    .college-name strong {
+      display: block;
+      font-size: clamp(22px, 4.5vw, 62px);
+      font-weight: 900;
+      letter-spacing: clamp(1.5px, .5vw, 6px);
+      line-height: 1.15
+    }
+
+    .college-name small {
+      display: block;
+      margin-top: 8px;
+      color: #e50914;
+      font-size: clamp(9px, 1.3vw, 15px);
+      font-weight: 800;
+      letter-spacing: clamp(2px, .6vw, 6px)
+    }
+
+    @keyframes logoIn {
+      to {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    @keyframes nameIn {
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes collegeOut {
+      to {
+        opacity: 0;
+        transform: scale(1.04);
+        visibility: hidden
+      }
+    }
+
+    /* SCREEN 2: MASKED CHARACTER FULL SCREEN ANIMATION */
+    .character-screen {
+      opacity: 0;
+      visibility: hidden;
+      animation: charOn .8s 3.3s forwards, charOut 1.0s 6.0s forwards;
+      will-change: opacity, transform
+    }
+
+    .character-wrap {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden
+    }
+
+    #charCanvas {
+      width: min(540px, 86vw);
+      height: min(540px, 76vh);
+      object-fit: contain;
+      filter: drop-shadow(0 0 35px rgba(229, 9, 20, .75)) drop-shadow(0 20px 50px rgba(0, 0, 0, .95));
+      transform: scale(1.05);
+      animation: charZoom 3.4s cubic-bezier(.16, 1, .3, 1) forwards;
+      will-change: transform;
+    }
+
+    @keyframes charOn {
+      to {
+        opacity: 1;
+        visibility: visible
+      }
+    }
+
+    @keyframes charOut {
+      to {
+        opacity: 0;
+        transform: scale(1.12);
+        visibility: hidden
+      }
+    }
+
+    @keyframes charZoom {
+      0% {
+        transform: scale(1.0)
+      }
+
+      100% {
+        transform: scale(1.12)
+      }
+    }
+
+    /* SCREEN TRANSITION BEAM & PORTAL */
+    #transition {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      animation: transitionOn .1s 5.6s forwards
+    }
+
+    @keyframes transitionOn {
+      to {
+        opacity: 1;
+        visibility: visible
+      }
+    }
+
+    .beam {
+      position: absolute;
+      left: -15%;
+      top: 50%;
+      width: 130%;
+      height: 4px;
+      background: #ff1b26;
+      box-shadow: 0 0 10px #fff, 0 0 22px #ff1b26, 0 0 65px rgba(229, 9, 20, .95);
+      transform: translateX(-110%);
+      animation: beam 1.1s 5.65s cubic-bezier(.7, 0, .2, 1) forwards;
+      will-change: transform
+    }
+
+    .beam::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      box-shadow: 0 0 18px #fff, 0 0 45px #e50914
+    }
+
+    @keyframes beam {
+      to {
+        transform: translateX(0)
+      }
+    }
+
+    .portal {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 120px;
+      height: 120px;
+      border: 2px solid #e50914;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(.2);
+      opacity: 0;
+      box-shadow: 0 0 25px #e50914, inset 0 0 25px rgba(229, 9, 20, .5);
+      animation: portal 1.1s 6.2s forwards;
+      will-change: transform, opacity
+    }
+
+    .portal::before,
+    .portal::after {
+      content: "";
+      position: absolute;
+      inset: 15px;
+      border: 1px solid rgba(229, 9, 20, .7);
+      border-radius: 50%
+    }
+
+    .portal::after {
+      inset: 31px;
+      border-color: rgba(255, 255, 255, .25)
+    }
+
+    @keyframes portal {
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(14)
+      }
+    }
+
+    /* SCREEN 3: CODEMERCE LOGO PAGE */
+    .club-screen {
+      opacity: 0;
+      visibility: hidden;
+      animation: clubOn .9s 6.7s forwards;
+      will-change: opacity
+    }
+
+    @keyframes clubOn {
+      to {
+        opacity: 1;
+        visibility: visible
+      }
+    }
+
+    .club-stage {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+      padding: 0 15px
+    }
+
+    .symbol {
+      width: min(340px, 64vw);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 22px rgba(0, 102, 255, .55)) drop-shadow(0 0 32px rgba(255, 122, 0, .55)) drop-shadow(0 0 45px rgba(229, 9, 20, .4));
+      opacity: 0;
+      transform: translateY(35px) scale(.82);
+      animation: symbolIn 1.3s 6.9s cubic-bezier(.16, 1, .3, 1) forwards, floatPulse 4s 8.2s ease-in-out infinite alternate;
+      will-change: transform, opacity;
+    }
+
+    @keyframes symbolIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+      }
+    }
+
+    @keyframes floatPulse {
+      from {
+        transform: translateY(0) scale(1)
+      }
+
+      to {
+        transform: translateY(-6px) scale(1.02)
+      }
+    }
+
+    .wordmark {
+      width: min(390px, 76vw);
+      height: auto;
+      margin-top: clamp(12px, 2vh, 18px);
+      opacity: 0;
+      transform: translateY(28px);
+      filter: drop-shadow(0 0 18px rgba(0, 102, 255, .45)) drop-shadow(0 0 18px rgba(255, 122, 0, .45));
+      animation: wordIn 1.2s 7.4s cubic-bezier(.16, 1, .3, 1) forwards;
+      will-change: transform, opacity;
+    }
+
+    @keyframes wordIn {
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .tag {
+      margin-top: clamp(14px, 2.2vh, 22px);
+      font-size: clamp(9px, 1.2vw, 14px);
+      letter-spacing: clamp(3px, 1vw, 6px);
+      color: #888;
+      opacity: 0;
+      animation: tagIn 1.0s 8.0s forwards
+    }
+
+    @keyframes tagIn {
+      to {
+        opacity: 1
+      }
+    }
+
+    .scan {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1px;
+      background: #e50914;
+      box-shadow: 0 0 12px #e50914;
+      opacity: .45;
+      animation: scan 2.5s 6.7s linear infinite
+    }
+
+    @keyframes scan {
+      from {
+        transform: translateY(0)
+      }
+
+      to {
+        transform: translateY(100vh)
+      }
+    }
+
+    .skip {
+      position: absolute;
+      right: max(16px, 3vw);
+      bottom: max(16px, 3vh);
+      z-index: 10;
+      color: #aaa;
+      background: rgba(10, 10, 10, .6);
+      border: 1px solid #333;
+      padding: 10px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      border-radius: 4px;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: color .25s, border-color .25s, background .25s, transform .25s;
+      touch-action: manipulation;
+    }
+
+    .skip:hover,
+    .skip:active {
+      color: #fff;
+      border-color: #e50914;
+      background: rgba(229, 9, 20, .2);
+      transform: scale(1.04)
+    }
+
+    .finish {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transition: opacity .7s, visibility .7s
+    }
+
+    /* MOBILE PHONE & TABLET OPTIMIZATIONS */
+    @media(max-width:600px) {
+      .screen {
+        padding: 15px
+      }
+
+      .college-name strong {
+        font-size: clamp(20px, 6.5vw, 32px);
+        letter-spacing: 2px
+      }
+
+      .college-name small {
+        font-size: 10px;
+        letter-spacing: 3px
+      }
+
+      #charCanvas {
+        width: min(350px, 92vw);
+        height: min(350px, 72vh);
+        transform: scale(1.04)
+      }
+
+      .symbol {
+        width: min(260px, 68vw)
+      }
+
+      .wordmark {
+        width: min(300px, 80vw)
+      }
+
+      .tag {
+        font-size: 9px;
+        letter-spacing: 3.5px
+      }
+
+      .skip {
+        padding: 8px 14px;
+        font-size: 10px
+      }
+    }
+
+    @media(min-width:1200px) {
+      #charCanvas {
+        width: min(580px, 45vw);
+        height: min(580px, 78vh)
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ONLY THIS INTRO OVERLAYS YOUR EXISTING WEBSITE -->
+  <div class="intro" id="intro">
+    <div class="bg-grid"></div>
+    <div class="glow"></div>
+    <div class="vignette"></div>
+
+    <!-- SCREEN 1: COLLEGE -->
+    <div class="screen college-screen" id="collegeScreen">
+      <div class="college-wrap">
+        <img class="college-logo" src="college-logo.jpg" alt="Saranathan College of Engineering">
+        <div class="college-name">
+          <strong>SARANATHAN</strong>
+          <small>COLLEGE OF ENGINEERING · TIRUCHIRAPPALLI</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: MASKED CHARACTER FULL SCREEN ANIMATION -->
+    <div class="screen character-screen" id="characterScreen">
+      <div class="character-wrap">
+        <canvas id="charCanvas" width="600" height="600" aria-label="Masked character animation"></canvas>
+      </div>
+    </div>
+
+    <!-- SCREEN TRANSITION BEAM & PORTAL -->
+    <div id="transition">
+      <div class="beam"></div>
+      <div class="portal"></div>
+    </div>
+
+    <!-- SCREEN 3: CODEMERCE LOGO PAGE -->
+    <div class="screen club-screen">
+      <div class="club-stage">
+        <img class="symbol" src="codemerce-symbol.png" alt="Codemerce symbol">
+        <img class="wordmark" src="codemerce-wordmark.png" alt="Codemerce">
+        <div class="tag">CODE · INNOVATE · ELEVATE</div>
+      </div>
+      <div class="scan"></div>
+    </div>
+
+    <button class="skip" id="skip">SKIP</button>
+  </div>
+
+  <script>
+    const intro = document.getElementById("intro");
+    function finish() {
+      intro.classList.add("finish");
+      window.dispatchEvent(new CustomEvent("codemerceIntroFinished"));
+      window.parent.postMessage({ type: "codemerceIntroFinished" }, window.location.origin);
+    }
+    document.getElementById("skip").onclick = finish;
+
+    // Complete 16-frame realistic character animation setup
+    const canvas = document.getElementById('charCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const frames = Array.from({ length: 16 }, (_, i) => {
+      const img = new Image();
+      img.src = `intro_frames/frame_${String(i).padStart(2, '0')}.png`;
+      return img;
+    });
+
+    // Realistic timing per frame (seconds) - plays all 16 frames ONCE
+    const timing = [0.16, 0.13, 0.11, 0.10, 0.10, 0.10, 0.10, 0.10, 0.11, 0.13, 0.14, 0.15, 0.15, 0.15, 0.14, 0.12];
+
+    let ready = false, charStart = 0;
+
+    Promise.all(frames.map(img => new Promise(r => { img.onload = r; img.onerror = r; }))).then(() => {
+      ready = true;
+    });
+
+    setTimeout(() => {
+      charStart = performance.now();
+      requestAnimationFrame(loop);
+    }, 3300);
+
+    function loop(now) {
+      if (!ready) return;
+      const elapsed = (now - charStart) / 1000;
+
+      let accumulated = 0;
+      let frameIdx = 15; // Hold frame 15 pose when complete
+
+      for (let i = 0; i < timing.length; i++) {
+        accumulated += timing[i];
+        if (elapsed < accumulated) {
+          frameIdx = i;
+          break;
+        }
+      }
+
+      ctx.clearRect(0, 0, 600, 600);
+      const frame = frames[frameIdx];
+      const scale = Math.min(600 / frame.naturalWidth, 600 / frame.naturalHeight);
+      const width = frame.naturalWidth * scale;
+      const height = frame.naturalHeight * scale;
+      ctx.drawImage(frame, (600 - width) / 2, (600 - height) / 2, width, height);
+
+      if (elapsed < 3.0) {
+        requestAnimationFrame(loop);
+      }
+    }
+
+    // Complete sequence finish timeout
+    setTimeout(finish, 9600);
+  </script>
+</body>
+
+</html>

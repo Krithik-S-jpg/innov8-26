@@ -1,0 +1,8 @@
+.blood-register{width:150px;height:58px;padding:0 25px!important;border:0!important;background:transparent!important;box-shadow:none!important}
+.blood-register:before{content:""!important;position:absolute!important;z-index:2!important;inset:-15px -23px -42px!important;opacity:.96!important;background:url('/blood-register-real.png') center/100% 100% no-repeat!important;clip-path:none!important;filter:drop-shadow(0 5px 5px #000b)!important;transform-origin:center top;animation:realBloodSettle 5.5s ease-in-out infinite alternate!important}
+.blood-register:after{display:none!important}
+.blood-register>span:first-child{z-index:5;text-shadow:0 2px 3px #000,0 0 7px #000}
+.blood-register .blood-trails{display:none}
+.blood-register:hover:before{opacity:1!important;filter:drop-shadow(0 7px 6px #000d) saturate(1.08)!important}
+.blood-register:hover{background:transparent!important;box-shadow:none!important}
+@keyframes realBloodSettle{0%{transform:translateY(-1px) scaleY(.985)}100%{transform:translateY(1px) scaleY(1.015)}}
