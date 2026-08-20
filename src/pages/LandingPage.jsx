@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowDown, ArrowRight, Check, LogOut, Menu, X } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, LogOut, Menu, Phone, X } from "lucide-react";
 import ProvidedLoader from "../components/boot/ProvidedLoader";
 import CodemerceIntro from "../components/boot/CodemerceIntro";
 import TeamFlow from "../components/TeamFlow";
@@ -94,6 +94,7 @@ function LandingPage() {
   const [intro, setIntro] = useState(true),
     [boot, setBoot] = useState(true),
     [menu, setMenu] = useState(false),
+    [contactOpen, setContactOpen] = useState(false),
     [selected, setSelected] = useState(null),
     [register, setRegister] = useState(false),
     [registered, setRegistered] = useState(isPlayerRegistered),
@@ -245,7 +246,13 @@ function LandingPage() {
               className={active === x.toLowerCase() ? "active" : ""}
               key={x}
               href={`#${x.toLowerCase()}`}
-              onClick={() => setMenu(false)}
+              onClick={(e) => {
+                if (x === "CONTACT") {
+                  e.preventDefault();
+                  setContactOpen(true);
+                }
+                setMenu(false);
+              }}
             >
               {x}
             </a>
@@ -666,11 +673,6 @@ function LandingPage() {
           <br />
           25 August 2026
         </p>
-        <div className="footer-contact-details">
-          <small>EVENT COORDINATORS</small>
-          <span>VENKAT: TBD</span>
-          <span>KRITHIK: TBD</span>
-        </div>
         <p
           id="copyright-disclaimer"
           className={`copyright-disclaimer ${disclaimerOpen ? "is-open" : ""}`}
@@ -684,6 +686,67 @@ function LandingPage() {
           respective rights holders.
         </p>
       </footer>
+      {contactOpen && (
+        <div className="overlay contact-modal">
+          <button
+            className="close"
+            onClick={() => setContactOpen(false)}
+            aria-label="Close contact details"
+          >
+            <X />
+          </button>
+          <div className="contact-card">
+            <small>EVENT COORDINATORS / CONTACT</small>
+            <h2>
+              EVENT
+              <br />
+              <span>COORDINATORS.</span>
+            </h2>
+            <p>
+              Get in touch with official student coordinators for any event
+              inquiries or support.
+            </p>
+            <div className="contact-list">
+              <div className="contact-item">
+                <div className="contact-info">
+                  <small>OVERALL COORDINATOR</small>
+                  <strong>VENKAT</strong>
+                </div>
+                <a href="tel:8838435611" className="contact-phone">
+                  <Phone size={14} />
+                  <span>8838435611</span>
+                </a>
+              </div>
+              <div className="contact-item">
+                <div className="contact-info">
+                  <small>WEBSITE COORDINATOR</small>
+                  <strong>KRITHIK</strong>
+                </div>
+                <a href="tel:9345445729" className="contact-phone">
+                  <Phone size={14} />
+                  <span>9345445729</span>
+                </a>
+              </div>
+              <div className="contact-item">
+                <div className="contact-info">
+                  <small>EVENT COORDINATOR</small>
+                  <strong>KEYA SHANIKA</strong>
+                </div>
+                <a href="tel:9487732672" className="contact-phone">
+                  <Phone size={14} />
+                  <span>9487732672</span>
+                </a>
+              </div>
+            </div>
+            <button
+              className="secondary contact-close-btn"
+              onClick={() => setContactOpen(false)}
+            >
+              CLOSE WINDOW
+            </button>
+          </div>
+        </div>
+      )}
       {selected && !register && !teamGate && !teamFlow && (
         <ChallengeDetail
           challenge={selected}
