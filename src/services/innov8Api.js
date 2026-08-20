@@ -130,6 +130,7 @@ export const signUpPlayer = async ({ player, password, confirmPassword }) => {
       email,
       password,
       options: {
+        emailRedirectTo: `${window.location.origin}/`,
         data: {
           full_name: player.name.trim(),
           phone: player.contact.trim(),
