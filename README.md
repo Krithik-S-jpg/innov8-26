@@ -11,7 +11,10 @@ team creation, team-code joining, and individual event registration.
 3. Copy `.env.example` to `.env.local`.
 4. In Supabase **Project Settings > API**, copy the Project URL and anon key into
    `.env.local`.
-5. Restart the Vite server with `npm run dev`.
+5. In Supabase **Authentication > URL Configuration**:
+   - Set **Site URL** to `https://innov8-26.vercel.app/` (or your live site URL).
+   - Add `https://innov8-26.vercel.app/**` to **Redirect URLs**.
+6. Restart the Vite server with `npm run dev`.
 
 Do not put the Supabase service-role key in this frontend. The migration enables
 Row Level Security, hides participant and team data from public table queries,
