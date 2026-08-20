@@ -668,8 +668,9 @@ function LandingPage() {
         </p>
         <div className="footer-contact-details">
           <small>EVENT COORDINATORS</small>
-          <span>VENKAT: TBD</span>
-          <span>KRITHIK: TBD</span>
+          <span>VENKAT: 8838435611</span>
+          <span>KRITHIK: 9345445729</span>
+          <span>KEYA SHANIKA: 9487732672</span>
         </div>
         <p
           id="copyright-disclaimer"
