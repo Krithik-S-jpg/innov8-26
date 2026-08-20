@@ -172,6 +172,12 @@
   font: 800 28px "Barlow Condensed";
   letter-spacing: 0.04em;
 }
+.admin-search-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 .admin-panel-title label {
   display: flex;
   align-items: center;
@@ -179,6 +185,36 @@
   width: min(380px, 100%);
   padding: 0 14px;
   border: 1px solid #ffffff20;
+}
+.admin-export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid #e3294a;
+  background: #17090c;
+  color: #ff3e60;
+  font: 700 8px JetBrains Mono;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.admin-export-btn:hover {
+  background: #e3294a;
+  color: #fff;
+}
+.admin-export-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.admin-event-tag {
+  color: #00f0ff;
+  font-weight: 600;
+}
+.admin-no-events {
+  color: #555;
 }
 .admin-panel-title input {
   width: 100%;
