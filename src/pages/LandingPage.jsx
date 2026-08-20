@@ -240,7 +240,7 @@ function LandingPage() {
           / {active.toUpperCase()}
         </div>
         <div className={menu ? "nav-links open" : "nav-links"}>
-          {["ABOUT", "CHALLENGES", "SCHEDULE"].map((x) => (
+          {["ABOUT", "CHALLENGES", "SCHEDULE", "CONTACT"].map((x) => (
             <a
               className={active === x.toLowerCase() ? "active" : ""}
               key={x}
@@ -639,7 +639,7 @@ function LandingPage() {
           REGISTER NOW <ArrowRight size={16} />
         </button>
       </section>
-      <footer>
+      <footer id="contact">
         <div className="footer-brand-group">
           <a className="brand" href="#home">
             <span>△○□</span> INNOV<b>8</b>'26
@@ -666,6 +666,12 @@ function LandingPage() {
           <br />
           25 August 2026
         </p>
+        <div className="footer-contact-details">
+          <small>EVENT COORDINATORS</small>
+          <span>VENKAT: 8838435611</span>
+          <span>KRITHIK: 9345445729</span>
+          <span>KEYA SHANIKA: 9487732672</span>
+        </div>
         <p
           id="copyright-disclaimer"
           className={`copyright-disclaimer ${disclaimerOpen ? "is-open" : ""}`}

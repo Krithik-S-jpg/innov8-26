@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { LogOut, RefreshCw, Search, ShieldCheck, Users, X } from "lucide-react";
+import { Download, LogOut, RefreshCw, Search, ShieldCheck, Users, X } from "lucide-react";
 import { supabase } from "../lib/supabase";
 
 const ADMIN_EMAIL = "admin@saranathan.ac.in";
@@ -62,20 +62,108 @@ export default function AdminPage() {
     window.location.hash = "home";
   };
 
-  const players = useMemo(() => {
+  const playersWithEvents = useMemo(() => {
+    if (!dashboard?.players) return [];
+
+    const playerEventsMap = new Map();
+
+    (dashboard.individual_registrations || []).forEach((reg) => {
+      const email = reg.email?.toLowerCase();
+      if (!email) return;
+      if (!playerEventsMap.has(email)) {
+        playerEventsMap.set(email, new Set());
+      }
+      playerEventsMap.get(email).add(reg.challenge);
+    });
+
+    (dashboard.teams || []).forEach((team) => {
+      (team.members || []).forEach((member) => {
+        const email = member.email?.toLowerCase();
+        if (!email) return;
+        if (!playerEventsMap.has(email)) {
+          playerEventsMap.set(email, new Set());
+        }
+        playerEventsMap.get(email).add(team.challenge);
+      });
+    });
+
+    return dashboard.players.map((player) => {
+      const email = player.email?.toLowerCase();
+      const eventSet = playerEventsMap.get(email) || new Set();
+      const eventsList = Array.from(eventSet);
+      return {
+        ...player,
+        registered_events: eventsList,
+        registered_events_text: eventsList.join(", ") || "None",
+      };
+    });
+  }, [dashboard]);
+
+  const filteredPlayers = useMemo(() => {
     const term = query.trim().toLowerCase();
-    if (!term) return dashboard?.players || [];
-    return (dashboard?.players || []).filter((player) =>
+    if (!term) return playersWithEvents;
+    return playersWithEvents.filter((player) =>
       [
         player.full_name,
         player.email,
         player.register_number,
         player.department,
+        player.year_of_study,
+        player.phone,
+        player.registered_events_text,
       ]
         .filter(Boolean)
         .some((value) => String(value).toLowerCase().includes(term)),
     );
-  }, [dashboard, query]);
+  }, [playersWithEvents, query]);
+
+  const exportToCSV = () => {
+    if (!filteredPlayers.length) return;
+
+    const headers = [
+      "Player Number",
+      "Full Name",
+      "Register Number",
+      "Email",
+      "Contact",
+      "Department",
+      "Year",
+      "Registered Events",
+    ];
+
+    const rows = filteredPlayers.map((player) => [
+      `#${player.player_number}`,
+      player.full_name || "",
+      player.register_number || "",
+      player.email || "",
+      player.phone || "",
+      player.department || "",
+      player.year_of_study || "",
+      player.registered_events_text || "None",
+    ]);
+
+    const csvContent = [
+      headers.map((h) => `"${String(h).replace(/"/g, '""')}"`).join(","),
+      ...rows.map((row) =>
+        row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(","),
+      ),
+    ].join("\n");
+
+    const blob = new Blob(["\uFEFF" + csvContent], {
+      type: "text/csv;charset=utf-8;",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    const filename = query.trim()
+      ? `innov8_registered_users_${query.trim().replace(/[^a-z0-9]/gi, "_")}.csv`
+      : "innov8_registered_users.csv";
+    link.setAttribute("href", url);
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   if (!authenticated) {
     return (
@@ -200,16 +288,26 @@ export default function AdminPage() {
         <div className="admin-panel-title">
           <div>
             <small>02 / PLAYER DATABASE</small>
-            <h2>REGISTERED USERS</h2>
+            <h2>REGISTERED USERS ({filteredPlayers.length})</h2>
           </div>
-          <label>
-            <Search size={14} />
-            <input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search name, register no., email..."
-            />
-          </label>
+          <div className="admin-search-actions">
+            <label>
+              <Search size={14} />
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search name, event, register no., email..."
+              />
+            </label>
+            <button
+              type="button"
+              className="admin-export-btn"
+              onClick={exportToCSV}
+              disabled={!filteredPlayers.length}
+            >
+              <Download size={14} /> EXPORT CSV / EXCEL
+            </button>
+          </div>
         </div>
         <div className="admin-table-wrap">
           <table>
@@ -221,10 +319,11 @@ export default function AdminPage() {
                 <th>CONTACT</th>
                 <th>DEPARTMENT</th>
                 <th>YEAR</th>
+                <th>REGISTERED EVENTS</th>
               </tr>
             </thead>
             <tbody>
-              {players.map((player) => (
+              {filteredPlayers.map((player) => (
                 <tr key={player.id}>
                   <td>
                     <b>#{player.player_number}</b> {player.full_name}
@@ -234,8 +333,24 @@ export default function AdminPage() {
                   <td>{player.phone}</td>
                   <td>{player.department}</td>
                   <td>{player.year_of_study}</td>
+                  <td>
+                    {player.registered_events?.length > 0 ? (
+                      <span className="admin-event-tag">
+                        {player.registered_events_text}
+                      </span>
+                    ) : (
+                      <span className="admin-no-events">None</span>
+                    )}
+                  </td>
                 </tr>
               ))}
+              {filteredPlayers.length === 0 && (
+                <tr>
+                  <td colSpan={7} style={{ textAlign: "center", color: "#888", padding: "24px" }}>
+                    No registered players found matching "{query}"
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
