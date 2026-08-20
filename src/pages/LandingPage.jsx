@@ -673,15 +673,6 @@ function LandingPage() {
           <br />
           25 August 2026
         </p>
-        <button
-          type="button"
-          className="disclaimer-trigger contact-trigger"
-          onClick={() => setContactOpen(true)}
-        >
-          <Phone size={13} />
-          <span>CONTACT COORDINATORS</span>
-          <ArrowRight size={13} />
-        </button>
         <p
           id="copyright-disclaimer"
           className={`copyright-disclaimer ${disclaimerOpen ? "is-open" : ""}`}
