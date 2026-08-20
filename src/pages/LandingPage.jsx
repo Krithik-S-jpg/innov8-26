@@ -709,7 +709,7 @@ function LandingPage() {
             <div className="contact-list">
               <div className="contact-item">
                 <div className="contact-info">
-                  <small>COORDINATOR</small>
+                  <small>OVERALL COORDINATOR</small>
                   <strong>VENKAT</strong>
                 </div>
                 <a href="tel:8838435611" className="contact-phone">
@@ -719,7 +719,7 @@ function LandingPage() {
               </div>
               <div className="contact-item">
                 <div className="contact-info">
-                  <small>COORDINATOR</small>
+                  <small>WEBSITE COORDINATOR</small>
                   <strong>KRITHIK</strong>
                 </div>
                 <a href="tel:9345445729" className="contact-phone">
@@ -729,7 +729,7 @@ function LandingPage() {
               </div>
               <div className="contact-item">
                 <div className="contact-info">
-                  <small>COORDINATOR</small>
+                  <small>EVENT COORDINATOR</small>
                   <strong>KEYA SHANIKA</strong>
                 </div>
                 <a href="tel:9487732672" className="contact-phone">
