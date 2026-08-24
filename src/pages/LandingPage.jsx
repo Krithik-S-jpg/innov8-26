@@ -737,6 +737,16 @@ function LandingPage() {
                   <span>9487732672</span>
                 </a>
               </div>
+              <div className="contact-item">
+                <div className="contact-info">
+                  <small>BUG HUNT COORDINATOR</small>
+                  <strong>MANASA</strong>
+                </div>
+                <a href="tel:8668160427" className="contact-phone">
+                  <Phone size={14} />
+                  <span>8668160427</span>
+                </a>
+              </div>
             </div>
             <button
               className="secondary contact-close-btn"
