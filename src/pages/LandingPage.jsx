@@ -769,6 +769,16 @@ function LandingPage() {
               </div>
               <div className="contact-item">
                 <div className="contact-info">
+                  <small>SHARK TANK COORDINATOR</small>
+                  <strong>Tejazwini</strong>
+                </div>
+                <a href="tel:9361967947" className="contact-phone">
+                  <Phone size={14} />
+                  <span>9361967947</span>
+                </a>
+              </div>
+              <div className="contact-item">
+                <div className="contact-info">
                   <small>IPL AUCTION COORDINATOR</small>
                   <strong>Hariprasad</strong>
                 </div>
