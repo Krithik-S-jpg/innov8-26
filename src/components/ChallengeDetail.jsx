@@ -3,10 +3,10 @@ import EventStatusPanel from './EventStatusPanel'
 
 const eventBriefs = {
   'PAPER PRESENTATION': {
-    venue:'JS Hall / Seminar Hall', duration:'5 mins presentation + 2-3 mins Q&A', team:'1 - 2 players', capacity:'Top 15 teams shortlisted', selection:'Abstract screening by 25.08.2026',
+    venue:'JS Hall / Seminar Hall', duration:'5 mins presentation + 2-3 mins Q&A', team:'1 - 2 players', capacity:'Top 15 teams shortlisted', selection:'Abstract screening by 28.08.2026',
     description:'Present research ideas, recent trending tech topics, innovations or solutions before a judging panel. Selection is based on abstract screening.',
     rounds:[
-      'Round 1: Abstract screening (online submission by 25.08.2026).',
+      'Round 1: Abstract screening (online submission by 28.08.2026).',
       'Round 2: Final presentation (5 mins presentation + 2-3 mins Q&A).'
     ],
     domains:[
