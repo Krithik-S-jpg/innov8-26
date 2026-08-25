@@ -53,16 +53,15 @@ const eventBriefs = {
     coordinator: { name: 'Tejazwini', phone: '9361967947' }
   },
   'CRIME MYSTERY': {
-    venue:'JS Hall', duration:'Round 1: 30 minutes', team:'4 members', capacity:'100 teams → Top 20', selection:'FCFS + performance shortlist',
-    description:'A team investigation and deduction challenge testing observation, logical reasoning, analytical thinking and teamwork through clues, evidence and witness statements.',
+    venue:'JS Hall', duration:'15 mins (R1) / 30 mins (R2)', team:'4 members per team', capacity:'100 teams', selection:'Performance shortlist to Round 2',
+    description:'An interactive investigation challenge where teams step into the role of detectives and work together to solve a fictional murder case.',
     rounds:[
-      'Round 1: up to 100 teams complete a 25-question mystery quiz in 30 minutes.',
-      'Teams are ranked by observation, reasoning and deduction performance.',
-      'The top 20 teams advance to Round 2.',
-      'Round 2 uses a detailed clue-and-evidence mystery; the best teams proceed to the final challenge.'
+      'Round 1 (15 Mins): Examine the case file, solve puzzles, and analyse suspects to identify the culprit. Top teams qualify for Round 2.',
+      'Round 2 (30 Mins Total): Qualified teams face a more challenging crime case, divide clues among members, and narrow down suspects before time expires.',
+      'Top 3 Finalists: Selected by correctly identifying the murderer, supporting the accusation with evidence, and solving the case in the shortest time.'
     ],
-    evaluation:['Observation', 'Logical reasoning', 'Analytical thinking', 'Deduction', 'Teamwork', 'Accuracy'],
-    requirement:'Exactly four members per team.',
+    evaluation:['Correct Murderer Identification', 'Evidence & Accusation Support', 'Time Efficiency', 'Observation & Deduction', 'Problem-solving', 'Teamwork'],
+    requirement:'Exactly 4 members per team. Time limit: 15 minutes for Round 1, 30 minutes total for Round 2.',
     coordinator: { name: 'Harini Saminathan', phone: '8098163256' }
   },
   'IPL AUCTION': {

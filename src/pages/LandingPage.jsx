@@ -61,8 +61,8 @@ const challenges = [
     "□",
     "CRIME MYSTERY",
     "NON-TECHNICAL",
-    "Clues. Evidence. Mystery.",
-    "Connect evidence, witness statements, and hidden clues to solve the investigation.",
+    "Think. Investigate. Solve.",
+    "Interactive investigation challenge where teams step into the role of detectives to solve a fictional murder case.",
   ],
 ].map(([n, symbol, name, category, line, detail]) => ({
   n,
