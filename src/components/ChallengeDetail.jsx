@@ -3,11 +3,17 @@ import EventStatusPanel from './EventStatusPanel'
 
 const eventBriefs = {
   'PAPER PRESENTATION': {
-    venue:'JS Hall / Seminar Hall', duration:'5-7 mins presentation + 2-3 mins Q&A', team:'1 - 2 players', capacity:'Top 15 teams shortlisted', selection:'Abstract screening by 25.08.2026',
+    venue:'JS Hall / Seminar Hall', duration:'5 mins presentation + 2-3 mins Q&A', team:'1 - 2 players', capacity:'Top 15 teams shortlisted', selection:'Abstract screening by 25.08.2026',
     description:'Present research ideas, recent trending tech topics, innovations or solutions before a judging panel. Selection is based on abstract screening.',
     rounds:[
       'Round 1: Abstract screening (online submission by 25.08.2026).',
-      'Round 2: Final presentation (5-7 mins presentation + 2-3 mins Q&A).'
+      'Round 2: Final presentation (5 mins presentation + 2-3 mins Q&A).'
+    ],
+    domains:[
+      'AI for Smart Business Solutions',
+      'FinTech and Digital Banking',
+      'Smart and Sustainable Communities',
+      'Cybersecurity and Digital Trust'
     ],
     evaluation:['Innovation', 'Clarity', 'PPT Quality', 'Q&A Response'],
     requirement:'PPT presentation and hard copies of Abstract & PPT must be submitted on game day.',
@@ -105,6 +111,19 @@ export default function ChallengeDetail({ challenge, onClose, onRegister, regist
                 </li>
               ))}
             </ol>
+            {brief.domains && (
+              <div style={{ marginTop: '32px' }}>
+                <small>DOMAINS</small>
+                <ul style={{ listStyle: 'none', margin: '16px 0 0', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
+                  {brief.domains.map(domain => (
+                    <li key={domain} style={{ padding: '12px 14px', border: '1px solid #ffffff1b', background: '#0c0c0e', color: '#e0e0e0', font: '500 11px JetBrains Mono', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ color: '#e32748', fontSize: '10px' }}>◈</span>
+                      <span>{domain}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </section>
           <aside>
             <small>EVALUATION FOCUS</small>
