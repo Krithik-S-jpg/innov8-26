@@ -20,10 +20,10 @@ const eventBriefs = {
     coordinator: { name: 'Yuga Bhargavi .E', phone: '9361858688' }
   },
   'BUG HUNT': {
-    venue:'JS Hall → Computer Lab', duration:'Multi-round', team:'2 members', capacity:'100 teams', selection:'25-question quiz → Top 50',
+    venue:'JS Hall → Computer Lab', duration:'Multi-round', team:'2 members', capacity:'100 teams', selection:'25-question quiz → Top 30',
     description:'Bug Hunt is an exciting competition where participants identify and find errors or bugs in a given program, code, application, or problem under time pressure.',
     rounds:[
-      'Round 1: 25-question online technical quiz (1 mark each, 20s per question) in JS Hall. Top 50 teams qualify.',
+      'Round 1: 25-question online technical quiz (1 mark each, 20s per question) in JS Hall. Top 30 teams qualify.',
       'Round 2: Practical debugging challenge in the Computer Lab across Easy, Medium, and Hard levels (1 hour total).',
       'Tie-Breaker Round: Hard-level coding challenge with strict time constraint if scores are tied.',
       'Top 3 finalists selected based on bugs solved, marks scored, and time taken.'
