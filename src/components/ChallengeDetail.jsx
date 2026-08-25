@@ -1,4 +1,4 @@
-import { ArrowRight, Check, X } from 'lucide-react'
+import { ArrowRight, Check, Phone, X } from 'lucide-react'
 import EventStatusPanel from './EventStatusPanel'
 
 const eventBriefs = {
@@ -11,17 +11,24 @@ const eventBriefs = {
   },
   'BUG HUNT': {
     venue:'JS Hall → Computer Lab', duration:'Multi-round', team:'2 members', capacity:'100 teams', selection:'25-question quiz → Top 50',
-    description:'A programming and debugging competition testing the ability to identify errors, understand code and produce corrected solutions under time pressure.',
-    rounds:['Round 1: 25-question technical quiz in JS Hall covering programming, logic and debugging.','Top 50 teams qualify for Round 2.','Round 2: practical debugging challenge in the Computer Lab using CodeTantra or Google Colab.','Highest-performing teams enter the final challenge; a tie-breaker is used when required.'],
-    evaluation:['Programming knowledge','Error identification','Logic','Debugging accuracy','Completion time'],
-    requirement:'Only C, Java and Python are permitted.'
+    description:'Bug Hunt is an exciting competition where participants identify and find errors or bugs in a given program, code, application, or problem under time pressure.',
+    rounds:[
+      'Round 1: 25-question online technical quiz (1 mark each, 20s per question) in JS Hall. Top 50 teams qualify.',
+      'Round 2: Practical debugging challenge in the Computer Lab across Easy, Medium, and Hard levels (1 hour total).',
+      'Tie-Breaker Round: Hard-level coding challenge with strict time constraint if scores are tied.',
+      'Top 3 finalists selected based on bugs solved, marks scored, and time taken.'
+    ],
+    evaluation:['Number of bugs solved','Marks scored','Time taken','Error identification','Logic & syntax accuracy'],
+    requirement:'Only one login/phone permitted per team. Registered email ID mandatory.',
+    coordinator: { name: 'MANASA', phone: '8668160427' }
   },
   'PROMPT2PRODUCT': {
     venue:'JS Hall', duration:'Multi-round', team:'2 members', capacity:'100 teams', selection:'Strict FCFS',
     description:'Use AI prompting, creativity and problem-solving to transform a given challenge or idea into a practical product concept.',
     rounds:['Teams are accepted strictly by registration timestamp until capacity is reached.','Round 1: interpret the challenge and develop the initial prompted solution.','Round 2: refine implementation, usability and product thinking.','Finals: present the completed product concept and working outcome.'],
     evaluation:['Prompting ability','Creativity','Problem-solving','Product thinking','Practicality','Presentation'],
-    requirement:'Every team must bring its own laptop. There is no preliminary shortlist.'
+    requirement:'Every team must bring its own laptop. There is no preliminary shortlist.',
+    coordinator: { name: 'Hariharan. A', phone: '9123512048' }
   },
   'SHARK TANK': {
     venue:'JS Hall', duration:'Multi-round', team:'Individual', capacity:'100 participants', selection:'Strict FCFS',
@@ -47,6 +54,75 @@ const eventBriefs = {
 }
 
 export default function ChallengeDetail({ challenge, onClose, onRegister, registrationStatus, statusLoading, onRefreshStatus }) {
-  const brief=eventBriefs[challenge.name]
-  return <div className="overlay challenge-detail"><button className="close" onClick={onClose}><X/></button><div className="detail-watermark">{challenge.symbol}</div><div className="detail-shell"><header><small>CHALLENGE {challenge.n} / {challenge.category}</small><h2>{challenge.name}</h2><p>{brief.description}</p></header><EventStatusPanel status={registrationStatus} loading={statusLoading} onRefresh={onRefreshStatus}/><div className="detail-meta"><div><span>TEAM</span><strong>{brief.team}</strong></div><div><span>VENUE</span><strong>{brief.venue}</strong></div><div><span>DURATION</span><strong>{brief.duration}</strong></div><div><span>CAPACITY</span><strong>{brief.capacity}</strong></div><div><span>SELECTION</span><strong>{brief.selection}</strong></div></div><div className="detail-content"><section><small>ROUND PROTOCOL</small><ol>{brief.rounds.map((round,index)=><li key={round}><i>{String(index+1).padStart(2,'0')}</i><p>{round}</p></li>)}</ol></section><aside><small>EVALUATION FOCUS</small><ul>{brief.evaluation.map(item=><li key={item}>{item}</li>)}</ul><div className="event-requirement"><span>IMPORTANT REQUIREMENT</span><p>{brief.requirement}</p></div></aside></div><footer><div><span>REGISTRATION</span><strong>{registrationStatus?.registered?'● CONFIRMED':'● OPEN'}</strong></div>{registrationStatus?.registered?<button className="primary registered-button" type="button" onClick={onRefreshStatus}><Check size={16}/> ALREADY REGISTERED</button>:<button className="primary" onClick={onRegister}>REGISTER FOR THIS CHALLENGE <ArrowRight size={16}/></button>}</footer></div></div>
+  const brief = eventBriefs[challenge.name]
+  return (
+    <div className="overlay challenge-detail">
+      <button className="close" onClick={onClose}><X /></button>
+      <div className="detail-watermark">{challenge.symbol}</div>
+      <div className="detail-shell">
+        <header>
+          <small>CHALLENGE {challenge.n} / {challenge.category}</small>
+          <h2>{challenge.name}</h2>
+          <p>{brief.description}</p>
+        </header>
+        <EventStatusPanel status={registrationStatus} loading={statusLoading} onRefresh={onRefreshStatus} />
+        <div className="detail-meta">
+          <div><span>TEAM</span><strong>{brief.team}</strong></div>
+          <div><span>VENUE</span><strong>{brief.venue}</strong></div>
+          <div><span>DURATION</span><strong>{brief.duration}</strong></div>
+          <div><span>CAPACITY</span><strong>{brief.capacity}</strong></div>
+          <div><span>SELECTION</span><strong>{brief.selection}</strong></div>
+        </div>
+        <div className="detail-content">
+          <section>
+            <small>ROUND PROTOCOL</small>
+            <ol>
+              {brief.rounds.map((round, index) => (
+                <li key={round}>
+                  <i>{String(index + 1).padStart(2, '0')}</i>
+                  <p>{round}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+          <aside>
+            <small>EVALUATION FOCUS</small>
+            <ul>
+              {brief.evaluation.map(item => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <div className="event-requirement">
+              <span>IMPORTANT REQUIREMENT</span>
+              <p>{brief.requirement}</p>
+            </div>
+            {brief.coordinator && (
+              <div className="event-requirement" style={{ marginTop: '16px', borderColor: '#00f3ff', background: '#00f3ff12' }}>
+                <span>EVENT COORDINATOR</span>
+                <p style={{ margin: '6px 0 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
+                  <strong style={{ color: '#fff', fontFamily: 'Barlow Condensed', fontSize: '16px' }}>{brief.coordinator.name}</strong>
+                  <a href={`tel:${brief.coordinator.phone}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#00f3ff', textDecoration: 'none', fontFamily: 'JetBrains Mono', fontSize: '12px' }}>
+                    <Phone size={12} />
+                    <span>{brief.coordinator.phone}</span>
+                  </a>
+                </p>
+              </div>
+            )}
+          </aside>
+        </div>
+        <footer>
+          <div><span>REGISTRATION</span><strong>{registrationStatus?.registered ? '● CONFIRMED' : '● OPEN'}</strong></div>
+          {registrationStatus?.registered ? (
+            <button className="primary registered-button" type="button" onClick={onRefreshStatus}>
+              <Check size={16} /> ALREADY REGISTERED
+            </button>
+          ) : (
+            <button className="primary" onClick={onRegister}>
+              REGISTER FOR THIS CHALLENGE <ArrowRight size={16} />
+            </button>
+          )}
+        </footer>
+      </div>
+    </div>
+  )
 }

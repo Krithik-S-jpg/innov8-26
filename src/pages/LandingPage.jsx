@@ -316,7 +316,7 @@ function LandingPage() {
             <br />1 CHAMPION.
           </p>
           <div className="hero-meta">
-            <span>25 AUGUST 2026</span>
+            <span>31 AUGUST 2026</span>
             <span>SARANATHAN COLLEGE OF ENGINEERING</span>
           </div>
           <div className="hero-actions">
@@ -370,7 +370,7 @@ function LandingPage() {
             <span>MAXIMUM EVENTS PER STUDENT</span>
           </div>
           <div>
-            <strong>25.08.26</strong>
+            <strong>31.08.26</strong>
             <span>ONE-DAY SYMPOSIUM</span>
           </div>
         </div>
@@ -597,7 +597,7 @@ function LandingPage() {
           <span>
             <i /> CONTROL ROOM ONLINE
           </span>
-          <b>GAME DAY / 25.08.26</b>
+          <b>GAME DAY / 31.08.26</b>
           <em>06 SCHEDULED PHASES</em>
         </div>
         <div className="section-kicker">04 / GAME DAY</div>
@@ -608,7 +608,7 @@ function LandingPage() {
             <span>TIMELINE.</span>
           </h2>
           <p>
-            25 August 2026. One precisely orchestrated day from player entry to
+            31 August 2026. One precisely orchestrated day from player entry to
             final outcome.
           </p>
         </div>
@@ -671,7 +671,7 @@ function LandingPage() {
         <p>
           Saranathan College of Engineering
           <br />
-          25 August 2026
+          31 August 2026
         </p>
         <p
           id="copyright-disclaimer"
@@ -735,6 +735,26 @@ function LandingPage() {
                 <a href="tel:9487732672" className="contact-phone">
                   <Phone size={14} />
                   <span>9487732672</span>
+                </a>
+              </div>
+              <div className="contact-item">
+                <div className="contact-info">
+                  <small>BUG HUNT COORDINATOR</small>
+                  <strong>MANASA</strong>
+                </div>
+                <a href="tel:8668160427" className="contact-phone">
+                  <Phone size={14} />
+                  <span>8668160427</span>
+                </a>
+              </div>
+              <div className="contact-item">
+                <div className="contact-info">
+                  <small>PROMPT2PRODUCT COORDINATOR</small>
+                  <strong>Hariharan. A</strong>
+                </div>
+                <a href="tel:9123512048" className="contact-phone">
+                  <Phone size={14} />
+                  <span>9123512048</span>
                 </a>
               </div>
             </div>
@@ -895,10 +915,10 @@ function LandingPage() {
                     <PlayerEvents />
                     <span className="barcode">
                       <i />
-                      <small>IN8 0826 2508 2026</small>
+                      <small>IN8 0826 3108 2026</small>
                     </span>
                     <footer>
-                      <span>25 AUGUST 2026</span>
+                      <span>31 AUGUST 2026</span>
                       <b>● ACCESS GRANTED</b>
                     </footer>
                   </span>
