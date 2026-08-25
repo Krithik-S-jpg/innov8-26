@@ -779,6 +779,16 @@ function LandingPage() {
               </div>
               <div className="contact-item">
                 <div className="contact-info">
+                  <small>CRIME MYSTERY COORDINATOR</small>
+                  <strong>Harini Saminathan</strong>
+                </div>
+                <a href="tel:8098163256" className="contact-phone">
+                  <Phone size={14} />
+                  <span>8098163256</span>
+                </a>
+              </div>
+              <div className="contact-item">
+                <div className="contact-info">
                   <small>IPL AUCTION COORDINATOR</small>
                   <strong>Hariprasad</strong>
                 </div>
