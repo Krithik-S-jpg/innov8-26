@@ -49,11 +49,17 @@ const eventBriefs = {
     requirement:'Exactly four members per team.'
   },
   'IPL AUCTION': {
-    venue:'Assigned auction arena', duration:'Two auction rounds + final', team:'4 members', capacity:'80 teams', selection:'Strict FCFS',
-    description:'A strategic cricket-auction simulation where teams use a fixed virtual budget and competitive bidding to assemble the strongest squad.',
-    rounds:['The first 80 valid teams are accepted, subject to department limits.','Round 1: registered teams participate in the opening auction phase.','Round 2: qualifying teams continue to the next auction phase.','Qualifying teams advance to the final auction, where the winner is decided by the event scoring rules.'],
-    evaluation:['Strategic thinking','Decision-making','Budget management','Team coordination','Cricket knowledge','Real-time bidding'],
-    requirement:'Maximum four teams per department; exactly four members per team.'
+    venue:'Assigned auction arena', duration:'Single round', team:'4 members', capacity:'80 teams', selection:'Strict FCFS',
+    description:'IPL Auction is a strategic competition where teams compete through bidding to build their strongest possible squad from the available 120-player pool within a 120 CR budget.',
+    rounds:[
+      'The first 80 valid teams are accepted, subject to department limits.',
+      'Players are presented one by one with their rating and base price.',
+      'Teams place competitive bids from their 120 CR virtual purse to acquire at least 11 players.',
+      'Top 3 winners are selected based on team rating, amount spent, and squad fitness.'
+    ],
+    evaluation:['Strategic thinking', 'Decision-making', 'Budget management', 'Team coordination', 'Cricket knowledge', 'Real-time bidding'],
+    requirement:'Maximum four teams per department; exactly four members per team. Each team starts with 120 CR budget and must acquire at least 11 players.',
+    coordinator: { name: 'Hariprasad', phone: '8838081556' }
   }
 }
 
