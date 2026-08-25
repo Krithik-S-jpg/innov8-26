@@ -757,6 +757,16 @@ function LandingPage() {
                   <span>9123512048</span>
                 </a>
               </div>
+              <div className="contact-item">
+                <div className="contact-info">
+                  <small>PAPER PRESENTATION COORDINATOR</small>
+                  <strong>Yuga Bhargavi .E</strong>
+                </div>
+                <a href="tel:9361858688" className="contact-phone">
+                  <Phone size={14} />
+                  <span>9361858688</span>
+                </a>
+              </div>
             </div>
             <button
               className="secondary contact-close-btn"
