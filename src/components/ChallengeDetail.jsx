@@ -27,7 +27,8 @@ const eventBriefs = {
     description:'Use AI prompting, creativity and problem-solving to transform a given challenge or idea into a practical product concept.',
     rounds:['Teams are accepted strictly by registration timestamp until capacity is reached.','Round 1: interpret the challenge and develop the initial prompted solution.','Round 2: refine implementation, usability and product thinking.','Finals: present the completed product concept and working outcome.'],
     evaluation:['Prompting ability','Creativity','Problem-solving','Product thinking','Practicality','Presentation'],
-    requirement:'Every team must bring its own laptop. There is no preliminary shortlist.'
+    requirement:'Every team must bring its own laptop. There is no preliminary shortlist.',
+    coordinator: { name: 'Hariharan. A', phone: '9123512048' }
   },
   'SHARK TANK': {
     venue:'JS Hall', duration:'Multi-round', team:'Individual', capacity:'100 participants', selection:'Strict FCFS',

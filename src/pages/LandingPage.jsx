@@ -747,6 +747,16 @@ function LandingPage() {
                   <span>8668160427</span>
                 </a>
               </div>
+              <div className="contact-item">
+                <div className="contact-info">
+                  <small>PROMPT2PRODUCT COORDINATOR</small>
+                  <strong>Hariharan. A</strong>
+                </div>
+                <a href="tel:9123512048" className="contact-phone">
+                  <Phone size={14} />
+                  <span>9123512048</span>
+                </a>
+              </div>
             </div>
             <button
               className="secondary contact-close-btn"
