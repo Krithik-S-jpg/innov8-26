@@ -35,11 +35,15 @@ const eventBriefs = {
     coordinator: { name: 'Hariharan. A', phone: '9123512048' }
   },
   'SHARK TANK': {
-    venue:'JS Hall', duration:'Multi-round', team:'Individual', capacity:'100 participants', selection:'Strict FCFS',
-    description:'An individual entrepreneurship and product-pitching competition where each participant must convince the judges of the value and potential of a product or business idea.',
-    rounds:['The first 100 valid individual registrations are accepted.','Round 1: every participant receives exactly one minute to pitch and sell the idea.','Judges shortlist the strongest Round 1 performers.','Finalists compete in the final pitching round before the judging panel.'],
-    evaluation:['Creativity','Communication','Persuasion','Confidence','Product understanding','Business thinking','Presentation skills'],
-    requirement:'Individual participation only. The one-minute Round 1 limit is mandatory.',
+    venue:'JS Hall', duration:'2 Dynamic Rounds', team:'Individual / Team', capacity:'100+ participants', selection:'Strict FCFS',
+    description:'An interactive business and entrepreneurship challenge where participants transform ideas into business concepts, adapt to unexpected topics, and convince judges that their approach is worth backing.',
+    rounds:[
+      'Round 1: Pick, Prepare & Pitch — Randomly pick a chit containing a product, service, or business idea. Get 5 minutes to prepare, present a 2-3 minute pitch, and face judges Q&A.',
+      'Shortlisted participants move to Round 2.',
+      'Round 2: Expect the Unexpected — Receive a new, diverse concept unrelated to Round 1. Develop a fresh business approach, deliver a bold pitch, and defend your idea in judges Q&A.'
+    ],
+    evaluation:['Creativity & Innovation', 'Business Viability', 'Strategic Thinking', 'Problem-Solving', 'Market Understanding', 'Communication & Presentation', 'Confidence & Adaptability', 'Response to Judges Questions'],
+    requirement:'FCFS Registration (100+ participants). Participants must think fast, adapt smart, and present clear business thinking.',
     coordinator: { name: 'Tejazwini', phone: '9361967947' }
   },
   'CRIME MYSTERY': {
