@@ -39,21 +39,31 @@ const eventBriefs = {
     description:'An individual entrepreneurship and product-pitching competition where each participant must convince the judges of the value and potential of a product or business idea.',
     rounds:['The first 100 valid individual registrations are accepted.','Round 1: every participant receives exactly one minute to pitch and sell the idea.','Judges shortlist the strongest Round 1 performers.','Finalists compete in the final pitching round before the judging panel.'],
     evaluation:['Creativity','Communication','Persuasion','Confidence','Product understanding','Business thinking','Presentation skills'],
-    requirement:'Individual participation only. The one-minute Round 1 limit is mandatory.'
+    requirement:'Individual participation only. The one-minute Round 1 limit is mandatory.',
+    coordinator: { name: 'Tejazwini', phone: '9361967947' }
   },
   'CRIME MYSTERY': {
-    venue:'JS Hall', duration:'Round 1: 30 minutes', team:'4 members', capacity:'100 teams → Top 20', selection:'FCFS + performance shortlist',
-    description:'A team investigation and deduction challenge testing observation, logical reasoning, analytical thinking and teamwork through clues, evidence and witness statements.',
-    rounds:['Round 1: up to 100 teams complete a 25-question mystery quiz in 30 minutes.','Teams are ranked by observation, reasoning and deduction performance.','The top 20 teams advance to Round 2.','Round 2 uses a detailed clue-and-evidence mystery; the best teams proceed to the final challenge.'],
-    evaluation:['Observation','Logical reasoning','Analytical thinking','Deduction','Teamwork','Accuracy'],
-    requirement:'Exactly four members per team.'
+    venue:'JS Hall', duration:'Round 1: 15 mins | Round 2: 30 mins', team:'4 members per team', capacity:'Top teams qualify for Round 2', selection:'Shortest time & accuracy',
+    description:'Crime Mystery is an interactive investigation challenge where teams step into the role of detectives and work together to solve a fictional murder case.',
+    rounds:[
+      'Round 1 (15 mins): Teams receive their first crime case, examine evidence, solve puzzles, and identify the culprit. Top teams qualify for Round 2.',
+      'Round 2 (30 mins total): Qualified teams face a new and more challenging crime case requiring sharper observation, stronger deduction, and faster problem-solving.'
+    ],
+    evaluation:['Correct identification of murderer', 'Supporting evidence', 'Shortest time', 'Observation & deduction', 'Teamwork'],
+    requirement:'Exactly 4 members per team. Time limit: 15 mins for Round 1, 30 mins total for Round 2.'
   },
   'IPL AUCTION': {
-    venue:'Assigned auction arena', duration:'Two auction rounds + final', team:'4 members', capacity:'80 teams', selection:'Strict FCFS',
-    description:'A strategic cricket-auction simulation where teams use a fixed virtual budget and competitive bidding to assemble the strongest squad.',
-    rounds:['The first 80 valid teams are accepted, subject to department limits.','Round 1: registered teams participate in the opening auction phase.','Round 2: qualifying teams continue to the next auction phase.','Qualifying teams advance to the final auction, where the winner is decided by the event scoring rules.'],
-    evaluation:['Strategic thinking','Decision-making','Budget management','Team coordination','Cricket knowledge','Real-time bidding'],
-    requirement:'Maximum four teams per department; exactly four members per team.'
+    venue:'Assigned auction arena', duration:'Single round', team:'4 members', capacity:'80 teams', selection:'Strict FCFS',
+    description:'IPL Auction is a strategic competition where teams compete through bidding to build their strongest possible squad from the available 120-player pool within a 120 CR budget.',
+    rounds:[
+      'The first 80 valid teams are accepted, subject to department limits.',
+      'Players are presented one by one with their rating and base price.',
+      'Teams place competitive bids from their 120 CR virtual purse to acquire at least 11 players.',
+      'Top 3 winners are selected based on team rating, amount spent, and squad fitness.'
+    ],
+    evaluation:['Strategic thinking', 'Decision-making', 'Budget management', 'Team coordination', 'Cricket knowledge', 'Real-time bidding'],
+    requirement:'Maximum four teams per department; exactly four members per team. Each team starts with 120 CR budget and must acquire at least 11 players.',
+    coordinator: { name: 'Hariprasad', phone: '8838081556' }
   }
 }
 
