@@ -3,11 +3,15 @@ import EventStatusPanel from './EventStatusPanel'
 
 const eventBriefs = {
   'PAPER PRESENTATION': {
-    venue:'Classroom', duration:'2 hours', team:'2 members', capacity:'30 teams', selection:'Faculty abstract evaluation',
-    description:'Present research ideas, technical concepts, innovations or solutions before a faculty judging panel. The event rewards technical understanding, originality, relevance and clarity of communication.',
-    rounds:['Submit the team abstract through the participant portal.','Faculty members evaluate every abstract for a total of 20 marks.','The top 30 teams are shortlisted.','Shortlisted teams deliver the final presentation before the judging panel.'],
-    evaluation:['Technical understanding','Originality','Relevance','Presentation quality','Communication clarity'],
-    requirement:'An abstract must be submitted before faculty evaluation.'
+    venue:'JS Hall / Seminar Hall', duration:'5-7 mins presentation + 2-3 mins Q&A', team:'1 - 2 players', capacity:'Top 15 teams shortlisted', selection:'Abstract screening by 25.08.2026',
+    description:'Present research ideas, recent trending tech topics, innovations or solutions before a judging panel. Selection is based on abstract screening.',
+    rounds:[
+      'Round 1: Abstract screening (online submission by 25.08.2026).',
+      'Round 2: Final presentation (5-7 mins presentation + 2-3 mins Q&A).'
+    ],
+    evaluation:['Innovation', 'Clarity', 'PPT Quality', 'Q&A Response'],
+    requirement:'PPT presentation and hard copies of Abstract & PPT must be submitted on game day.',
+    coordinator: { name: 'Yuga Bhargavi .E', phone: '9361858688' }
   },
   'BUG HUNT': {
     venue:'JS Hall → Computer Lab', duration:'Multi-round', team:'2 members', capacity:'100 teams', selection:'25-question quiz → Top 50',
