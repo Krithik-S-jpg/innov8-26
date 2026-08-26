@@ -123,7 +123,38 @@ function LandingPage() {
     ),
     [active, setActive] = useState("home"),
     [disclaimerOpen, setDisclaimerOpen] = useState(false),
-    [submitting, setSubmitting] = useState(false);
+    [submitting, setSubmitting] = useState(false),
+    [timeLeft, setTimeLeft] = useState("");
+
+  useEffect(() => {
+    const targetDate = new Date("2026-08-31T09:15:00+05:30").getTime();
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        setTimeLeft("00:00:00");
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      const pad = (n) => String(n).padStart(2, "0");
+      if (days > 0) {
+        setTimeLeft(`${days}d ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`);
+      } else {
+        setTimeLeft(`${pad(hours)}:${pad(minutes)}:${pad(seconds)}`);
+      }
+    };
+
+    updateTimer();
+    const timerId = setInterval(updateTimer, 1000);
+    return () => clearInterval(timerId);
+  }, []);
   const name = player.name;
   useEffect(() => {
     if (passwordRecovery) {
@@ -614,7 +645,7 @@ function LandingPage() {
         </div>
         <div className="countdown-panel">
           <small>GAME COMMENCES IN</small>
-          <strong>08:00:00</strong>
+          <strong>{timeLeft || "00:00:00"}</strong>
           <span>FACILITY TIME / IST</span>
         </div>
         <div className="timeline">
