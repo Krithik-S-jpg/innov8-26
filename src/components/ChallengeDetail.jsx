@@ -3,21 +3,27 @@ import EventStatusPanel from './EventStatusPanel'
 
 const eventBriefs = {
   'PAPER PRESENTATION': {
-    venue:'JS Hall / Seminar Hall', duration:'5-7 mins presentation + 2-3 mins Q&A', team:'1 - 2 players', capacity:'Top 15 teams shortlisted', selection:'Abstract screening by 25.08.2026',
+    venue:'JS Hall / Seminar Hall', duration:'5 mins presentation + 2-3 mins Q&A', team:'1 - 2 players', capacity:'Top 15 teams shortlisted', selection:'Abstract screening by 28.08.2026',
     description:'Present research ideas, recent trending tech topics, innovations or solutions before a judging panel. Selection is based on abstract screening.',
     rounds:[
-      'Round 1: Abstract screening (online submission by 25.08.2026).',
-      'Round 2: Final presentation (5-7 mins presentation + 2-3 mins Q&A).'
+      'Round 1: Abstract screening (online submission by 28.08.2026).',
+      'Round 2: Final presentation (5 mins presentation + 2-3 mins Q&A).'
+    ],
+    domains:[
+      'AI for Smart Business Solutions',
+      'FinTech and Digital Banking',
+      'Smart and Sustainable Communities',
+      'Cybersecurity and Digital Trust'
     ],
     evaluation:['Innovation', 'Clarity', 'PPT Quality', 'Q&A Response'],
     requirement:'PPT presentation and hard copies of Abstract & PPT must be submitted on game day.',
     coordinator: { name: 'Yuga Bhargavi .E', phone: '9361858688' }
   },
   'BUG HUNT': {
-    venue:'JS Hall → Computer Lab', duration:'Multi-round', team:'2 members', capacity:'100 teams', selection:'25-question quiz → Top 50',
+    venue:'JS Hall → Computer Lab', duration:'Multi-round', team:'2 members', capacity:'100 teams', selection:'25-question quiz → Top 30',
     description:'Bug Hunt is an exciting competition where participants identify and find errors or bugs in a given program, code, application, or problem under time pressure.',
     rounds:[
-      'Round 1: 25-question online technical quiz (1 mark each, 20s per question) in JS Hall. Top 50 teams qualify.',
+      'Round 1: 25-question online technical quiz (1 mark each, 20s per question) in JS Hall. Top 30 teams qualify.',
       'Round 2: Practical debugging challenge in the Computer Lab across Easy, Medium, and Hard levels (1 hour total).',
       'Tie-Breaker Round: Hard-level coding challenge with strict time constraint if scores are tied.',
       'Top 3 finalists selected based on bugs solved, marks scored, and time taken.'
@@ -35,22 +41,28 @@ const eventBriefs = {
     coordinator: { name: 'Hariharan. A', phone: '9123512048' }
   },
   'SHARK TANK': {
-    venue:'JS Hall', duration:'Multi-round', team:'Individual', capacity:'100 participants', selection:'Strict FCFS',
-    description:'An individual entrepreneurship and product-pitching competition where each participant must convince the judges of the value and potential of a product or business idea.',
-    rounds:['The first 100 valid individual registrations are accepted.','Round 1: every participant receives exactly one minute to pitch and sell the idea.','Judges shortlist the strongest Round 1 performers.','Finalists compete in the final pitching round before the judging panel.'],
-    evaluation:['Creativity','Communication','Persuasion','Confidence','Product understanding','Business thinking','Presentation skills'],
-    requirement:'Individual participation only. The one-minute Round 1 limit is mandatory.',
+    venue:'JS Hall', duration:'2 Dynamic Rounds', team:'Individual / Team', capacity:'100+ participants', selection:'Strict FCFS',
+    description:'An interactive business and entrepreneurship challenge where participants transform ideas into business concepts, adapt to unexpected topics, and convince judges that their approach is worth backing.',
+    rounds:[
+      'Round 1: Pick, Prepare & Pitch — Randomly pick a chit containing a product, service, or business idea. Get 5 minutes to prepare, present a 2-3 minute pitch, and face judges Q&A.',
+      'Shortlisted participants move to Round 2.',
+      'Round 2: Expect the Unexpected — Receive a new, diverse concept unrelated to Round 1. Develop a fresh business approach, deliver a bold pitch, and defend your idea in judges Q&A.'
+    ],
+    evaluation:['Creativity & Innovation', 'Business Viability', 'Strategic Thinking', 'Problem-Solving', 'Market Understanding', 'Communication & Presentation', 'Confidence & Adaptability', 'Response to Judges Questions'],
+    requirement:'FCFS Registration (100+ participants). Participants must think fast, adapt smart, and present clear business thinking.',
     coordinator: { name: 'Tejazwini', phone: '9361967947' }
   },
   'CRIME MYSTERY': {
-    venue:'JS Hall', duration:'Round 1: 15 mins | Round 2: 30 mins', team:'4 members per team', capacity:'Top teams qualify for Round 2', selection:'Shortest time & accuracy',
-    description:'Crime Mystery is an interactive investigation challenge where teams step into the role of detectives and work together to solve a fictional murder case.',
+    venue:'JS Hall', duration:'15 mins (R1) / 30 mins (R2)', team:'4 members per team', capacity:'100 teams', selection:'Performance shortlist to Round 2',
+    description:'An interactive investigation challenge where teams step into the role of detectives and work together to solve a fictional murder case.',
     rounds:[
-      'Round 1 (15 mins): Teams receive their first crime case, examine evidence, solve puzzles, and identify the culprit. Top teams qualify for Round 2.',
-      'Round 2 (30 mins total): Qualified teams face a new and more challenging crime case requiring sharper observation, stronger deduction, and faster problem-solving.'
+      'Round 1 (15 Mins): Examine the case file, solve puzzles, and analyse suspects to identify the culprit. Top teams qualify for Round 2.',
+      'Round 2 (30 Mins Total): Qualified teams face a more challenging crime case, divide clues among members, and narrow down suspects before time expires.',
+      'Top 3 Finalists: Selected by correctly identifying the murderer, supporting the accusation with evidence, and solving the case in the shortest time.'
     ],
-    evaluation:['Correct identification of murderer', 'Supporting evidence', 'Shortest time', 'Observation & deduction', 'Teamwork'],
-    requirement:'Exactly 4 members per team. Time limit: 15 mins for Round 1, 30 mins total for Round 2.'
+    evaluation:['Correct Murderer Identification', 'Evidence & Accusation Support', 'Time Efficiency', 'Observation & Deduction', 'Problem-solving', 'Teamwork'],
+    requirement:'Exactly 4 members per team. Time limit: 15 minutes for Round 1, 30 minutes total for Round 2.',
+    coordinator: { name: 'Harini Saminathan', phone: '8098163256' }
   },
   'IPL AUCTION': {
     venue:'Assigned auction arena', duration:'Single round', team:'4 members', capacity:'80 teams', selection:'Strict FCFS',
@@ -98,6 +110,19 @@ export default function ChallengeDetail({ challenge, onClose, onRegister, regist
                 </li>
               ))}
             </ol>
+            {brief.domains && (
+              <div style={{ marginTop: '32px' }}>
+                <small>DOMAINS</small>
+                <ul style={{ listStyle: 'none', margin: '16px 0 0', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
+                  {brief.domains.map(domain => (
+                    <li key={domain} style={{ padding: '12px 14px', border: '1px solid #ffffff1b', background: '#0c0c0e', color: '#e0e0e0', font: '500 11px JetBrains Mono', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ color: '#e32748', fontSize: '10px' }}>◈</span>
+                      <span>{domain}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </section>
           <aside>
             <small>EVALUATION FOCUS</small>

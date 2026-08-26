@@ -209,6 +209,24 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+.admin-event-filter {
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid #ffffff20;
+  background: #09090a;
+  color: #00f0ff;
+  font: 700 8px JetBrains Mono;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  outline: none;
+}
+.admin-event-filter:focus {
+  border-color: #00f0ff;
+}
+.admin-event-filter option {
+  background: #09090a;
+  color: #eee;
+}
 .admin-event-tag {
   color: #00f0ff;
   font-weight: 600;
