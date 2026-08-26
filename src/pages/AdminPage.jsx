@@ -11,8 +11,14 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
+  const [teamQuery, setTeamQuery] = useState("");
+  const [selectedEvent, setSelectedEvent] = useState("ALL");
 
   const loadDashboard = async () => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     setError("");
     const { data, error: requestError } = await supabase.rpc(
@@ -25,9 +31,13 @@ export default function AdminPage() {
 
   useEffect(() => {
     let active = true;
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
     supabase.auth.getUser().then(({ data }) => {
       if (!active) return;
-      const allowed = data.user?.email?.toLowerCase() === ADMIN_EMAIL;
+      const allowed = data?.user?.email?.toLowerCase() === ADMIN_EMAIL;
       setAuthenticated(allowed);
       if (allowed) loadDashboard();
       else setLoading(false);
@@ -39,6 +49,11 @@ export default function AdminPage() {
 
   const login = async (event) => {
     event.preventDefault();
+    if (!supabase) {
+      setError("Supabase connection is not configured.");
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     setError("");
     const { error: loginError } = await supabase.auth.signInWithPassword({
@@ -56,7 +71,9 @@ export default function AdminPage() {
   };
 
   const logout = async () => {
-    await supabase.auth.signOut();
+    if (supabase) {
+      await supabase.auth.signOut();
+    }
     setAuthenticated(false);
     setDashboard(null);
     window.location.hash = "home";
@@ -98,6 +115,39 @@ export default function AdminPage() {
       };
     });
   }, [dashboard]);
+
+  const availableEvents = useMemo(() => {
+    if (!dashboard?.teams) return [];
+    const set = new Set(dashboard.teams.map((t) => t.challenge).filter(Boolean));
+    return Array.from(set).sort();
+  }, [dashboard]);
+
+  const filteredTeams = useMemo(() => {
+    if (!dashboard?.teams) return [];
+    return dashboard.teams.filter((team) => {
+      const matchesEvent =
+        selectedEvent === "ALL" ||
+        (team.challenge && team.challenge.toUpperCase() === selectedEvent.toUpperCase());
+      const term = teamQuery.trim().toLowerCase();
+      if (!term) return matchesEvent;
+      const matchesSearch = [
+        team.name,
+        team.code,
+        team.challenge,
+        team.abstract,
+        ...(team.members || []).flatMap((m) => [
+          m.full_name,
+          m.email,
+          m.phone,
+          m.register_number,
+          m.department,
+        ]),
+      ]
+        .filter(Boolean)
+        .some((val) => String(val).toLowerCase().includes(term));
+      return matchesEvent && matchesSearch;
+    });
+  }, [dashboard, selectedEvent, teamQuery]);
 
   const filteredPlayers = useMemo(() => {
     const term = query.trim().toLowerCase();
@@ -157,6 +207,85 @@ export default function AdminPage() {
     const filename = query.trim()
       ? `innov8_registered_users_${query.trim().replace(/[^a-z0-9]/gi, "_")}.csv`
       : "innov8_registered_users.csv";
+    link.setAttribute("href", url);
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
+  const exportTeamsToCSV = () => {
+    if (!filteredTeams.length) return;
+
+    const headers = [
+      "Event Name",
+      "Team Name",
+      "Team Code",
+      "Joined Count",
+      "Team Capacity",
+      "Member Role",
+      "Member Name",
+      "Register Number",
+      "Email",
+      "Contact",
+      "Department",
+      "Year",
+      "Paper Abstract",
+    ];
+
+    const rows = [];
+    filteredTeams.forEach((team) => {
+      if (team.members && team.members.length > 0) {
+        team.members.forEach((member) => {
+          rows.push([
+            team.challenge || "",
+            team.name || "",
+            team.code || "",
+            team.joined_count || 0,
+            team.team_size || 0,
+            member.role || "",
+            member.full_name || "",
+            member.register_number || "",
+            member.email || "",
+            member.phone || "",
+            member.department || "",
+            member.year_of_study || "",
+            team.abstract || "",
+          ]);
+        });
+      } else {
+        rows.push([
+          team.challenge || "",
+          team.name || "",
+          team.code || "",
+          team.joined_count || 0,
+          team.team_size || 0,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          team.abstract || "",
+        ]);
+      }
+    });
+
+    const csvContent = [
+      headers.map((h) => `"${String(h).replace(/"/g, '""')}"`).join(","),
+      ...rows.map((row) =>
+        row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(","),
+      ),
+    ].join("\n");
+
+    const blob = new Blob(["\uFEFF" + csvContent], {
+      type: "text/csv;charset=utf-8;",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    const filename = `innov8_teams_${selectedEvent.toLowerCase().replace(/[^a-z0-9]/gi, "_")}.csv`;
     link.setAttribute("href", url);
     link.setAttribute("download", filename);
     document.body.appendChild(link);
@@ -360,18 +489,45 @@ export default function AdminPage() {
         <div className="admin-panel-title">
           <div>
             <small>03 / TEAM DATABASE</small>
-            <h2>TEAM ROSTERS</h2>
+            <h2>TEAM ROSTERS ({filteredTeams.length})</h2>
           </div>
-          <span>
-            <Users size={14} /> {dashboard?.teams?.length || 0} TEAMS
-          </span>
+          <div className="admin-search-actions">
+            <select
+              value={selectedEvent}
+              onChange={(e) => setSelectedEvent(e.target.value)}
+              className="admin-event-filter"
+            >
+              <option value="ALL">ALL EVENTS ({dashboard?.teams?.length || 0})</option>
+              {availableEvents.map((evt) => (
+                <option key={evt} value={evt}>
+                  {evt}
+                </option>
+              ))}
+            </select>
+            <label>
+              <Search size={14} />
+              <input
+                value={teamQuery}
+                onChange={(event) => setTeamQuery(event.target.value)}
+                placeholder="Search team, code, member, event..."
+              />
+            </label>
+            <button
+              type="button"
+              className="admin-export-btn"
+              onClick={exportTeamsToCSV}
+              disabled={!filteredTeams.length}
+            >
+              <Download size={14} /> EXPORT TEAMS CSV
+            </button>
+          </div>
         </div>
         <div className="admin-team-list">
-          {(dashboard?.teams || []).map((team) => (
+          {filteredTeams.map((team) => (
             <details key={team.id}>
               <summary>
                 <div>
-                  <small>{team.challenge}</small>
+                  <small style={{ color: "#e32748", fontWeight: "700" }}>{team.challenge}</small>
                   <strong>{team.name}</strong>
                 </div>
                 <code>{team.code}</code>
@@ -404,6 +560,11 @@ export default function AdminPage() {
               </div>
             </details>
           ))}
+          {filteredTeams.length === 0 && (
+            <div style={{ textAlign: "center", color: "#888", padding: "32px", border: "1px dashed #ffffff20" }}>
+              No teams found matching the selected event or query.
+            </div>
+          )}
         </div>
       </section>
 
